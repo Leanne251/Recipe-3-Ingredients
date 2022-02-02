@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SearchAgain from '../SearchAgain/SearchAgain';
 
 function ShowRecipe({ setID, id, setGetRecipes, setInput }) {
 	const [ receipeData, setRecipeData ] = useState();
@@ -22,12 +23,6 @@ function ShowRecipe({ setID, id, setGetRecipes, setInput }) {
 
 	// let cleanText = receipeData.instructions.replace(/<\/?[^>]+(>|$)/g, '');
 
-	function searchAgain() {
-		setID(undefined);
-		setGetRecipes(undefined);
-		setInput({});
-	}
-
 	return receipeData !== undefined ? (
 		<div>
 			<h2>Your Recipe</h2>
@@ -36,7 +31,7 @@ function ShowRecipe({ setID, id, setGetRecipes, setInput }) {
 			<p>
 				METHOD:<br /> {receipeData.instructions}
 			</p>
-			<button onClick={searchAgain}>Search Again</button>
+			<SearchAgain setInput={setInput} setGetRecipes={setGetRecipes} setID={setID} />
 		</div>
 	) : (
 		<div />
