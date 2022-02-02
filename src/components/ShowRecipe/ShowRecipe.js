@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import SearchForm from '../SearchForm/SearchForm';
 
 function ShowRecipe({ setID, id, setGetRecipes, setInput }) {
 	const [ receipeData, setRecipeData ] = useState();
@@ -18,15 +17,15 @@ function ShowRecipe({ setID, id, setGetRecipes, setInput }) {
 			}
 			searchRecipe();
 		},
-		[ setID ]
+		[ id ]
 	);
 
 	// let cleanText = receipeData.instructions.replace(/<\/?[^>]+(>|$)/g, '');
 
 	function searchAgain() {
 		setID(undefined);
-		setGetRecipes(() => undefined);
-		setInput(() => undefined);
+		setGetRecipes(undefined);
+		setInput({});
 	}
 
 	return receipeData !== undefined ? (
@@ -37,7 +36,7 @@ function ShowRecipe({ setID, id, setGetRecipes, setInput }) {
 			<p>
 				METHOD:<br /> {receipeData.instructions}
 			</p>
-			<button>Search Again</button>
+			<button onClick={searchAgain}>Search Again</button>
 		</div>
 	) : (
 		<div />

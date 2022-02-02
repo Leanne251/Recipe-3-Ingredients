@@ -7,6 +7,7 @@ function SearchForm(props) {
 
 	function getInput(e) {
 		const value = e.target.value;
+		console.log('value', value);
 		setInput({ ...input, [e.target.name]: value });
 	}
 	console.log('input', input);
